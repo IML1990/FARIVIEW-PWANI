@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWANI Pool Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --header-bg-color: #03918a;
+            --text-color: #333;
+            --white: #fff;
+            --accent-color: #026460;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .header {
+            background-color: var(--header-bg-color);
+            color: var(--white);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            height: 30px;
+            width: auto;
+            margin-right: 1rem;
+        }
+
+        .hero {
+            background-color: var(--header-bg-color);
+            color: var(--white);
+            padding: 4rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .hero .tap-to-view-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--white);
+            color: var(--header-bg-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .hero .tap-to-view-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        .toc-link {
+            display: block;
+            background-color: var(--light-gray);
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .toc-link:hover {
+            background-color: #e0e0e0;
+        }
+
+        .section {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .sub-header {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .item-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .item-card:last-of-type {
+            border-bottom: none;
+        }
+
+        .item-details {
+            flex-grow: 1;
+            padding-right: 1rem;
+        }
+
+        .item-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .item-allergens {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 0.25rem;
+        }
+
+        .item-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+        
+        .item-price-double {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .notes {
+            font-style: italic;
+            text-align: center;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .sides-sauces-note {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .beverage-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .beverage-table th, .beverage-table td {
+            text-align: left;
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .beverage-table th:last-child, .beverage-table td:last-child {
+            text-align: right;
+            white-space: nowrap;
+        }
+        
+        .beverage-table td:first-child {
+            font-weight: 500;
+        }
+        
+        .beverage-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .beverage-item-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            margin: 0 1rem;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .footer-links {
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--header-bg-color);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <img src="https://googleusercontent.com/file_content/1" alt="PWANI logo" class="logo">
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="https://googleusercontent.com/file_content/0" alt="PWANI Pool Restaurant logo" class="hero-logo">
+            <h2>Fairview Hotel, Nairobi</h2>
+            <a href="#toc" class="tap-to-view-button">Tap to View Menu</a>
+        </section>
+
+        <section id="toc" class="content">
+            <h2 class="section-header">Table of Contents</h2>
+            <nav class="toc">
+                <a href="#Small-Plates" class="toc-link">Small Plates</a>
+                <a href="#From-the-Josper-Grill" class="toc-link">From the Josper Grill</a>
+                <a href="#Ocean-&-Fire" class="toc-link">Ocean & Fire</a>
+                <a href="#Sides-&-Sauces" class="toc-link">Sides & Sauces</a>
+                <a href="#Desserts" class="toc-link">Desserts</a>
+                <a href="#Beverages-&-Soft-Drinks" class="toc-link">Beverages & Soft Drinks</a>
+                <a href="#Cocktails-&-Mocktails" class="toc-link">Cocktails & Mocktails</a>
+                <a href="#Spirits-&-Liqueurs" class="toc-link">Spirits & Liqueurs</a>
+                <a href="#Wines-&-Champagne" class="toc-link">Wines & Champagne</a>
+            </nav>
+        </section>
+
+        <div class="content">
+            <section id="Small-Plates" class="section">
+                <h2 class="section-header">SMALL PLATES</h2>
+                <p class="notes">Perfect for sharing or tasting a little of everything.</p>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">GARLIC LABNEH (V)</span>
+                        <div class="item-description">Salted labneh | roasted garlic | cherry tomato | oregano | olive oil | lavash bread balsamic reduction | micro herbs</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Gluten 🌾</div>
+                    </div>
+                    <span class="item-price">Ksh 950</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">TOMATO & BURRATA SALAD ( )</span>
+                        <div class="item-description">Agrodolce | pickled raspberries | basil | toasted pumpkin seeds | Rocket | herb oil | baked beets</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Gluten 🌾</div>
+                    </div>
+                    <span class="item-price">Ksh 1,900</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">BAKED CAMEMBERT (V)</span>
+                        <div class="item-description">Honey | thyme | chilli flakes | roasted grapes | nuts | lavash</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Gluten 🌾, Nuts 🥜</div>
+                    </div>
+                    <span class="item-price">Ksh 2,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">POTATO CROQUETTES (V)</span>
+                        <div class="item-description">Potato | crispy fried | saffron aioli</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Gluten 🌾, Eggs 🍳</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">CHICKEN CROQUETTES</span>
+                        <div class="item-description">Chicken flakes | potato | crispy fried saffron aioli</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Gluten 🌾, Eggs 🍳</div>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">SALT & PEPPER CALAMARI (S)</span>
+                        <div class="item-description">Grilled lemon | roasted garlic aioli | jalapeño salsa</div>
+                        <div class="item-allergens">Allergens- Fish 🐟, Gluten 🌾, Eggs 🍳</div>
+                    </div>
+                    <span class="item-price">Ksh 2,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">LAMB KOFTA</span>
+                        <div class="item-description">Maria bread bewaz salad | tahini sauce | grilled tomato</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Gluten 🌾</div>
+                    </div>
+                    <span class="item-price">Ksh 2,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">BONE MARROW</span>
+                        <div class="item-description">Roasted bone marrow | spicy garlic butter | toasted bread | tomato salad</div>
+                        <div class="item-allergens">Allergens- Milk 🥛, Gluten 🌾</div>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <p class="notes">Please allow 15-20 minutes preparation time for the above dishes.</p>
+            </section>
+
+            <section id="From-the-Josper-Grill" class="section">
+                <h2 class="section-header">FROM THE JOSPER GRILL</h2>
+                <p class="notes">All our prime cuts are aged 21-28 days. All grills come with your choice of two sides and one house-made sauce</p>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Rump Steak (350g)</span>
+                    </div>
+                    <span class="item-price">Ksh 4,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Beef Filet Mignon (300g) (unaged)</span>
+                    </div>
+                    <span class="item-price">Ksh 4,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Rib-Eye Steak (350g)</span>
+                    </div>
+                    <span class="item-price">Ksh 4,300</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">T-Bone Steak (450g)</span>
+                    </div>
+                    <span class="item-price">Ksh 5,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Sirloin Steak (300g)</span>
+                    </div>
+                    <span class="item-price">Ksh 4,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Sirloin Steak (500g)</span>
+                    </div>
+                    <span class="item-price">Ksh 5,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tomahawk Steak (450g)</span>
+                    </div>
+                    <span class="item-price">Ksh 5,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tomahawk Steak (600g)</span>
+                    </div>
+                    <span class="item-price">Ksh 6,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Lamb Chops (350g)</span>
+                    </div>
+                    <span class="item-price">Ksh 4,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">KUKU CHOMA</span>
+                        <div class="item-description">½ grilled capon | lemon-mustard-honey-yogurt marinade</div>
+                        <div class="item-allergens">Allergens- Dairy 🥛, Mustard 🌿</div>
+                    </div>
+                    <span class="item-price">Ksh 3,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">GRILLED PORK RIBS (P) (300g)</span>
+                        <div class="item-description">Slow cooked ribs | honey glazed</div>
+                        <div class="item-allergens">Allergens- Pork 🐖</div>
+                    </div>
+                    <span class="item-price">Ksh 3,800</span>
+                </div>
+            </section>
+
+            <section id="Ocean-&-Fire" class="section">
+                <h2 class="section-header">OCEAN & FIRE</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">RED SNAPPER FILLET (S) (250g)</span>
+                        <div class="item-description">Pan-seared snapper | garlic herb butter</div>
+                        <div class="item-allergens">Allergens- Fish 🐟, Dairy 🥛</div>
+                    </div>
+                    <span class="item-price">Ksh 3,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">SAMAKI WA KUPAKA (S) (250g)</span>
+                        <div class="item-description">Grilled red snapper | creamy coconut-lime sauce</div>
+                        <div class="item-allergens">Allergens- Fish 🐟</div>
+                    </div>
+                    <span class="item-price">Ksh 3,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">NORWEGIAN SALMON ( ) (220g)</span>
+                        <div class="item-description">Pan-seared salmon | garlic herb butter</div>
+                        <div class="item-allergens">Allergens- Fish 🐟, Dairy 🥛</div>
+                    </div>
+                    <span class="item-price">Ksh 5,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">GRILLED JUMBO PRAWNS ( ) (300g)</span>
+                        <div class="item-description">Wood-fired, lightly seasoned</div>
+                        <div class="item-allergens">Allergens- Shellfish 🦐</div>
+                    </div>
+                    <span class="item-price">Ksh 5,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">FRENCH MUSSELS (S)</span>
+                        <div class="item-description">Cream | white wine | onion | garlic | green chili | parsley | French baguette</div>
+                        <div class="item-allergens">Allergens- Shellfish 🦐, Dairy 🥛, Gluten 🌾, Wine 🍷</div>
+                    </div>
+                    <span class="item-price">Ksh 2,800</span>
+                </div>
+                <p class="notes">Please allow 25-30 minutes preparation time for the above dishes</p>
+            </section>
+
+            <section id="Sides-&-Sauces" class="section">
+                <h2 class="section-header">SIDES</h2>
+                <p class="notes sides-sauces-note">CHOOSE TWO SIDES AND ONE HOUSE SAUCE WITH EVERY GRILL MAIN DISH OR ADD ANY EXTRAS @KSH500</p>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">SIDES</span>
+                        <div class="item-description">Mashed potato | fries | garlic roast potatoes | white rice | stir-fried vegetable rice | steamed vegetables | green salad | creamed spinach or garlic bread.</div>
+                    </div>
+                </div>
+                <h2 class="section-header">HOUSE SAUCES</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">SAUCES</span>
+                        <div class="item-description">Red wine jus | Lamb jus | Lemon-butter sauce | Garlic-butter sauce | Mushroom sauce Diane sauce | Peppercorn sauce</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="Desserts" class="section">
+                <h2 class="section-header">DESSERTS</h2>
+                <p class="notes">Please enquire with your server on today's offerings.</p>
+                <p class="notes">Please let us know about your Allergies, Special Dietary Needs or Restrictions</p>
+                <p class="notes">(P) Pork items (V) Vegeterian item (S) Sea food</p>
+            </section>
+
+            <section id="Beverages-&-Soft-Drinks" class="section">
+                <h2 class="section-header">BEVERAGE & WINE LIST</h2>
+                <h3 class="sub-header">FRESH BREW</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Coffee House Coffee</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Cappuccino</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Latte Iced</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Latte Americano</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 350</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Macchiato Espresso</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 700</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Mocha Cappuccino</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 700</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Café Mocha Iced</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tea Pot / Masala Café</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Chocolate Iced</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Milk Café Kenyan</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tea Hot</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tea Hot</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 700</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Concoction Herbal</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 700</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Dawa Iced</span>
+                        <div class="item-description">Single</div>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                
+                <h3 class="sub-header">SOFT DRINKS</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Fresh Juices (500ml)</span>
+                        <div class="item-description">Passion / Mango / Cocktail</div>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Freshly Squeezed (300ml)</span>
+                        <div class="item-description">Orange / Pineapple / Watermelon / Carrot</div>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">All Sodas</span>
+                    </div>
+                    <span class="item-price">Ksh 250</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Diet Coke</span>
+                    </div>
+                    <span class="item-price">Ksh 300</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Ginger Ale</span>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Mineral Water (500ml)</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Mineral Water (750ml)</span>
+                    </div>
+                    <span class="item-price">Ksh 550</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Sparkling Mineral (500ml)</span>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Sparkling Mineral (750ml)</span>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">San Pellegrino Sparkling (750ml)</span>
+                    </div>
+                    <span class="item-price">Ksh 1,100</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Red Bull</span>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+            </section>
+
+            <section id="Cocktails-&-Mocktails" class="section">
+                <h2 class="section-header">HOUSE COCKTAILS</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Dawa Vodka</span>
+                        <div class="item-description">Honey / Lemon Juice / Lime</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Fairview Lady Tanqueray</span>
+                        <div class="item-description">Cranberry Juice / Orange Juice / Sugar Syrup</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Espresso Martini Vodka</span>
+                        <div class="item-description">Amarula / Espresso / Sugar Syrup</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Hot Toddy Brandy</span>
+                        <div class="item-description">Honey / Cinnamon / Hot Water</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Mojito</span>
+                        <div class="item-description">Rum / Soda Water / Mint / Brown Sugar / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Banana Daiquiri</span>
+                        <div class="item-description">White Rum / Triple Sec / Banana / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Hennessy Side Car</span>
+                        <div class="item-description">Hennessy/Cointreau / Lemon Juice / Sugar Syrup</div>
+                    </div>
+                    <span class="item-price">Ksh 3,500</span>
+                </div>
+
+                <h3 class="sub-header">CLASSIC COCKTAILS</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Negroni</span>
+                        <div class="item-description">Gin/Campari / Martini Rosso</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Negroni Blue Dot</span>
+                        <div class="item-description">Blue Dot Gin / Campari / Martini Rosso</div>
+                    </div>
+                    <span class="item-price">Ksh 2,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Negroni Red Dot</span>
+                        <div class="item-description">Red Dot Gin / Campari / Martini Rosso</div>
+                    </div>
+                    <span class="item-price">Ksh 3,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Margarita</span>
+                        <div class="item-description">Tequila / Triple Sec / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Cosmopolitan</span>
+                        <div class="item-description">Vodka / Triple Sec / Cranberry Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Whisky Julep</span>
+                        <div class="item-description">Whisky / Sweet & Sour Mix / Mint Leaves / Ginger-Ale</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tom Collins</span>
+                        <div class="item-description">Tanqueray / Basil / Lemon Juice / Sugar Syrup / Cucumber / Tonic</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bloody Mary</span>
+                        <div class="item-description">Vodka / Tomato Juice / Tabasco / Salt / Worcestershire Sauce / Lime Juice / Black Pepper</div>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Pinacolada</span>
+                        <div class="item-description">White Rum / Malibu / Pineapple Juice / Coconut Cream / Sugar Syrup / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Blue Lagoon</span>
+                        <div class="item-description">Blue Curacao / Vodka / Lemonade / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+
+                <h3 class="sub-header">BOOZY COFFEE</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Irish Coffee</span>
+                        <div class="item-description">Irish Whisky / Coffee / Nutmeg / Whipped Cream</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Parisienne Coffee</span>
+                        <div class="item-description">Brandy / Coffee / Whipped Cream</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Calypso Coffee</span>
+                        <div class="item-description">Tia Maria / Dark Rum / Coffee / Whipped Cream</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Russian Coffee</span>
+                        <div class="item-description">Vodka / Coffee / Whipped Cream</div>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Long Island Iced Tea</span>
+                        <div class="item-description">Gin / White Rum / Triple Sec / Vodka / Tequila / Coke / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 2,500</span>
+                </div>
+
+                <h3 class="sub-header">MOCKTAILS</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Virgin Colada</span>
+                        <div class="item-description">Pineapple Juice / Coconut Cream / Sugar Syrup / Lemon Juice</div>
+                    </div>
+                    <span class="item-price">Ksh 550</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Fruit Punch</span>
+                        <div class="item-description">Mixed Fruit Tisane / Mango Juice / Fresh Lime / Fresh Mint</div>
+                    </div>
+                    <span class="item-price">Ksh 550</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Lemonade</span>
+                        <div class="item-description">Lemon Juice / Sprite / Sugar Syrup / Crushed Ice</div>
+                    </div>
+                    <span class="item-price">Ksh 550</span>
+                </div>
+            </section>
+
+            <section id="Spirits-&-Liqueurs" class="section">
+                <h2 class="section-header">BEERS</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Draft Beer (500ml)</span>
+                        <div class="item-description">Kifa Bok Brew / Simpils 5 Brew</div>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Local Beers</span>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Savanna Cider</span>
+                    </div>
+                    <span class="item-price">Ksh 750</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Imported Beers</span>
+                        <div class="item-description">Heineken</div>
+                    </div>
+                    <span class="item-price">Ksh 650</span>
+                </div>
+
+                <h2 class="section-header">APERITIFS</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Martini Bianco</span>
+                    </div>
+                    <span class="item-price">Ksh 400</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Martini Rosso</span>
+                    </div>
+                    <span class="item-price">Ksh 400</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Campari</span>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Disaronno Amaretto</span>
+                    </div>
+                    <span class="item-price">Ksh 700</span>
+                </div>
+
+                <h2 class="section-header">LIQUEURS</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Amarula Cream</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Baileys Cream</span>
+                    </div>
+                    <span class="item-price">Ksh 550</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Southern Comfort</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tripple Sec</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Jägermeister</span>
+                    </div>
+                    <span class="item-price">Ksh 650</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Cointreau</span>
+                    </div>
+                    <span class="item-price">Ksh 650</span>
+                </div>
+
+                <h2 class="section-header">TEQUILA</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Camino Real Gold / Bianco</span>
+                    </div>
+                    <span class="item-price">Ksh 350</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Don Julio Reposado</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Don Julio Bianco</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+
+                <h2 class="section-header">VODKA</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Smirnoff Vodka</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Absolut Blue Vodka</span>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Belvedere Vodka</span>
+                    </div>
+                    <span class="item-price">Ksh 850</span>
+                </div>
+
+                <h2 class="section-header">GIN</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Procera Green Dot</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Procera Red Dot</span>
+                    </div>
+                    <span class="item-price">Ksh 1,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Procera Blue Dot</span>
+                    </div>
+                    <span class="item-price">Ksh 850</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Malfy Gin Originale</span>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Malfy Gin Rosa</span>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Malfy Con Limone</span>
+                    </div>
+                    <span class="item-price">Ksh 600</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tanqueray No 10</span>
+                    </div>
+                    <span class="item-price">Ksh 700</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Tanqueray London Dry</span>
+                    </div>
+                    <span class="item-price">Ksh 500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Beefeater Gin</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bombay Sapphire</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Gordon's Gin Dry</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Gilbey's Gin Dry</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+
+                <h2 class="section-header">RUM</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bacardi Silver</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Captain Morgan Dark Rum</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Malibu</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+
+                <h2 class="section-header">BRANDY/COGNAC</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Martel VSOP</span>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Hennessy VS</span>
+                    </div>
+                    <span class="item-price">Ksh 750</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Martel VS</span>
+                    </div>
+                    <span class="item-price">Ksh 650</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Viceroy Brandy</span>
+                    </div>
+                    <span class="item-price">Ksh 350</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Richot Brandy</span>
+                    </div>
+                    <span class="item-price">Ksh 250</span>
+                </div>
+
+                <h2 class="section-header">SINGLE MALT WHISKY</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Singleton Dufftown 12yrs</span>
+                    </div>
+                    <span class="item-price">Ksh 850</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Dhalwinnie 15 yrs</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Glenlivet Founders Reserve</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Singleton Dufftown 15yrs</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Talisker 10 yrs</span>
+                    </div>
+                    <span class="item-price">Ksh 1,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Glenfiddich 15 yrs</span>
+                    </div>
+                    <span class="item-price">Ksh 1,500</span>
+                </div>
+
+                <h2 class="section-header">BLENDS & BOURBON</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Chivas Regal 12yrs</span>
+                    </div>
+                    <span class="item-price">Ksh 800</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Johnnie Walker Black Label</span>
+                    </div>
+                    <span class="item-price">Ksh 750</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Johnnie Walker Red Label</span>
+                    </div>
+                    <span class="item-price">Ksh 400</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Jack Daniels</span>
+                    </div>
+                    <span class="item-price">Ksh 750</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Jameson Irish Whisky</span>
+                    </div>
+                    <span class="item-price">Ksh 450</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Jameson Black Barrel</span>
+                    </div>
+                    <span class="item-price">Ksh 850</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Ballantine's Whisky</span>
+                    </div>
+                    <span class="item-price">Ksh 350</span>
+                </div>
+            </section>
+
+            <section id="Wines-&-Champagne" class="section">
+                <h2 class="section-header">WHITE WINES BY CARAFE</h2>
+                <h3 class="sub-header">Gewürztraminer</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Undurraga Gewürztraminer</span>
+                    </div>
+                    <span class="item-price">Ksh 1,800</span>
+                </div>
+                <h3 class="sub-header">Sauvignon Blanc</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Zevenwacht 7even Sauvignon Blanc</span>
+                    </div>
+                    <span class="item-price">Ksh 2,100</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Trumpeter Sauvignon Blanc</span>
+                    </div>
+                    <span class="item-price">Ksh 2,300</span>
+                </div>
+                <h3 class="sub-header">Chardonnay</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bruce Jack Reserve Chardonnay</span>
+                    </div>
+                    <span class="item-price">Ksh 2,500</span>
+                </div>
+                <h3 class="sub-header">Chenin Blanc</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bruce Jack Chenin Blanc</span>
+                    </div>
+                    <span class="item-price">Ksh 2,000</span>
+                </div>
+
+                <h2 class="section-header">ROSE WINES BY CARAFE</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Trumpeter Rose</span>
+                    </div>
+                    <span class="item-price">Ksh 2,200</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Vergelegen Rose</span>
+                    </div>
+                    <span class="item-price">Ksh 2,700</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Beynat Floyd Malbec Rose</span>
+                    </div>
+                    <span class="item-price">Ksh 3,000</span>
+                </div>
+
+                <h2 class="section-header">RED WINES BY CARAFE</h2>
+                <h3 class="sub-header">Carmenere</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Undurraga Carmenere</span>
+                    </div>
+                    <span class="item-price">Ksh 1,800</span>
+                </div>
+                <h3 class="sub-header">Cabernet Sauvignon</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Undurraga Cabernet Sauvignon</span>
+                    </div>
+                    <span class="item-price">Ksh 1,800</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Shiraz/Syriah</span>
+                        <div class="item-description">Zevenwacht 7even Syrah</div>
+                    </div>
+                    <span class="item-price">Ksh 2,100</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Merlot</span>
+                        <div class="item-description">Bruce Jack Merlot</div>
+                    </div>
+                    <span class="item-price">Ksh 2,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Red Blends</span>
+                        <div class="item-description">Vergelegen Cab-Sauv-Merlot</div>
+                    </div>
+                    <span class="item-price">Ksh 3,000</span>
+                </div>
+
+                <h2 class="section-header">FLAVOURED WINES BY BOTTLE</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Rosso Nobile/Red Sweet Chocolate - Germany</span>
+                    </div>
+                    <span class="item-price">Ksh 6,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bianco Nobile/White Sweet Vanilla - Germany</span>
+                    </div>
+                    <span class="item-price">Ksh 6,500</span>
+                </div>
+
+                <h2 class="section-header">WHITE WINES BY BOTTLE</h2>
+                <h3 class="sub-header">Sauvignon Blanc</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Zevenwacht 7even Sauvignon Blanc - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 6,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Trumpeter Sauvignon Blanc - Argentina</span>
+                    </div>
+                    <span class="item-price">Ksh 6,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Montes Classic Sauvignon Blanc - Chile</span>
+                    </div>
+                    <span class="item-price">Ksh 8,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Yealands Single Sauvignon Blanc - New Zealand</span>
+                    </div>
+                    <span class="item-price">Ksh 10,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">lona Sauvignon Blanc - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 12,000</span>
+                </div>
+
+                <h3 class="sub-header">Chenin Blanc</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bruce Jack Lifestyle Chenin Blanc - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 5,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Inspector Jordan Chenin Blanc - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 10,500</span>
+                </div>
+
+                <h3 class="sub-header">Chardonnay</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bruce Jack Reserve Chardonnay - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 7,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Gerard Bertrand Chardonnay - France</span>
+                    </div>
+                    <span class="item-price">Ksh 8,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Vergelegen Chardonnay - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 9,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Jordan Inspector Peringuey Chenin Blanc - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 11,000</span>
+                </div>
+
+                <h3 class="sub-header">Pinot Grigio</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Ruffino Pinot Grigio - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 9,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Longheri Delle Venezie Pinot Grigio - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 14,000</span>
+                </div>
+
+                <h3 class="sub-header">Gewürztraminer</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Undurraga Gewürztraminer - Chile</span>
+                    </div>
+                    <span class="item-price">Ksh 5,000</span>
+                </div>
+
+                <h3 class="sub-header">White Blends</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Soave Classico DOC - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 12,000</span>
+                </div>
+
+                <h2 class="section-header">ROSE WINES BY BOTTLE</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Trumpeter Rose - Argentina</span>
+                    </div>
+                    <span class="item-price">Ksh 6,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Beynat Floyd Malbec- Chile</span>
+                    </div>
+                    <span class="item-price">Ksh 8,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Vergelegen Rose - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 8,500</span>
+                </div>
+
+                <h2 class="section-header">RED WINES BY BOTTLE</h2>
+                <h3 class="sub-header">Carmenere</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Undurraga Carmenere - Chile</span>
+                    </div>
+                    <span class="item-price">Ksh 5,000</span>
+                </div>
+
+                <h3 class="sub-header">Cabernet Sauvignon</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Undurraga Cabernet Sauvignon - Chile</span>
+                    </div>
+                    <span class="item-price">Ksh 5,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Trumpeter Cabernet Sauvignon - Argentina</span>
+                    </div>
+                    <span class="item-price">Ksh 7,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Vergelegen Cabernet Sauvignon - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 9,000</span>
+                </div>
+
+                <h3 class="sub-header">Merlot</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bruce Jack Merlot - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 5,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Jordan Black Magic Merlot - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 14,000</span>
+                </div>
+
+                <h3 class="sub-header">Shiraz/Syriah</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Zevenwacht 7even Syrah - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 6,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Painted Wolf The Den Shiraz- South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 7,500</span>
+                </div>
+
+                <h3 class="sub-header">Pinotage</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Bruce Jack Reserve Pinotage - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 7,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Painted Wolf The Den Pinotage - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 7,500</span>
+                </div>
+
+                <h3 class="sub-header">Malbec</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Trumpeter Malbec - Argentina</span>
+                    </div>
+                    <span class="item-price">Ksh 7,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Postales Malbec - Argentina</span>
+                    </div>
+                    <span class="item-price">Ksh 8,000</span>
+                </div>
+                <h3 class="sub-header">Pinot Noir</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Montes Pinot Noir - Chile</span>
+                    </div>
+                    <span class="item-price">Ksh 8,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">lona Mr. P Pinot Noir - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 11,000</span>
+                </div>
+
+                <h3 class="sub-header">Red Blends</h3>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Cune Rioja Crianza- Spain</span>
+                    </div>
+                    <span class="item-price">Ksh 7,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Vergelegen Cabernet Sauvignon-Merlot - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 8,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Sirius Bordeaux Rouge - France</span>
+                    </div>
+                    <span class="item-price">Ksh 9,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Warwick Three Cape Ladies - South Africa</span>
+                    </div>
+                    <span class="item-price">Ksh 10,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Cune Rioja Reserve - Spain</span>
+                    </div>
+                    <span class="item-price">Ksh 11,500</span>
+                </div>
+
+                <h2 class="section-header">CHAMPAGNES & SPARKLING WINES</h2>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Giusti Sparkling Extra Dry - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 10,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Ruffino Prosecco - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 12,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Piemonte DOC De Blanc Brut - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 13,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Rosalia Rose Extra Dry - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 14,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Rosalia Prosecco DOC Treviso - Italy</span>
+                    </div>
+                    <span class="item-price">Ksh 15,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Simonsig Kaapse Vonkel Brut</span>
+                    </div>
+                    <span class="item-price">Ksh 18,500</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Giusti Asolo Prosecco Superiore DOCG Brut</span>
+                    </div>
+                    <span class="item-price">Ksh 19,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Laurent Perrier - France</span>
+                    </div>
+                    <span class="item-price">Ksh 38,000</span>
+                </div>
+                <div class="item-card">
+                    <div class="item-details">
+                        <span class="item-name">Louis Roederer Collection 242 - France</span>
+                    </div>
+                    <span class="item-price">Ksh 40,000</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Click on the below icons to review us on:</p>
+        <div class="social-icons">
+            <a href="https://www.tripadvisor.com/UserReviewEdit-g294207-d302822-The_Fairview-Nairobi.html" target="_blank" rel="noopener noreferrer">
+                <img src="https://googleusercontent.com/file_content/3" alt="TripAdvisor">
+            </a>
+            <a href="https://www.google.com/maps/place/Fairview+Hotel+Kenya/@-1.2923178,36.8100141,17z/..." target="_blank" rel="noopener noreferrer">
+                <img src="https://googleusercontent.com/file_content/2" alt="Google Reviews">
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/fairviewhotelnairobi/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.ihg.com/spnd/hotels/us/en/nairobi/nbofn/hoteldetail" target="_blank" rel="noopener noreferrer">Hotel Website</a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
